@@ -60,13 +60,15 @@ export default function App() {
                 <div dir='ltr' className="grid grid-cols-5 gap-2">
                     {history.length ? history.map((item) => {
                         if (item.img != dream) return (
-                        <Art item={item}/>
+                        <div onClick={()=>setDream(item)}>
+                                <Art item={item}/>
+                            </div>
                     )}) : ''}
                 </div>
             </div>
             <div className="output">
-                <div className="relative overflow-hidden w-[80dvw] h-[80dvw] md:h-[75dvh] md:w-[75dvh] bg-default-100 rounded-xl">
-                    {dream ? (<Art item={dream} />) : ""}
+                <div className="relative overflow-hidden w-auto h-[80dvw] md:h-[75dvh] md:w-[75dvh] bg-default-100 rounded-xl">
+                    {dream ? (<Art item={dream} className="h-full"/>) : ""}
                 </div>
             </div>
         </section>

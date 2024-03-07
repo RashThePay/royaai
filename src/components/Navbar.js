@@ -8,7 +8,7 @@ import { usePathname } from "next/navigation";
 export default function RoyaNavbar() {
   const currentPath = usePathname();
   return (
-    <Navbar className="bg-transparent backdrop-blur-none backdrop-saturate-1 max-w-[100dvw]" >
+    <Navbar position="static" className="bg-transparent backdrop-blur-none backdrop-saturate-1 max-w-[100dvw]" >
 
       <NavbarContent className="flex gap-4 w-full" justify="center">
         <NavbarBrand>
