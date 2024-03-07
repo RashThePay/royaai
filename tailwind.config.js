@@ -1,5 +1,5 @@
 /** @type {import('tailwindcss').Config} */
-import {nextui} from "@nextui-org/react";
+import { nextui } from "@nextui-org/react";
 
 module.exports = {
   content: [
@@ -26,35 +26,37 @@ module.exports = {
           background: "#2e2d3e",
           foreground: "#ffffff",
           primary: {
-            50: '#fdfbed',
-            100: '#f8f2cd',
-            200: '#f0e28e',
-            300: '#ead15f',
-            400: '#e5bf3a',
+            950: '#fdfbed',
+            900: '#f8f2cd',
+            800: '#f0e28e',
+            700: '#ead15f',
+            600: '#e5bf3a',
             500: '#dda323',
-            600: '#c37f1c',
-            700: '#a25d1b',
-            800: '#84491c',
-            900: '#6d3d1a',
-            950: '#3e1f0a',
+            400: '#c37f1c',
+            300: '#a25d1b',
+            200: '#84491c',
+            100: '#6d3d1a',
+            50: '#3e1f0a',
+            background: '#c37f1c',
+            foreground: '#454464',
             DEFAULT: '#f0e28e',
-        },        
-        default: {
-          50: '#f5f6f9',
-          100: '#e7e9f2',
-          200: '#d5d8e8',
-          300: '#b9bed7',
-          400: '#979ec3',
-          500: '#7d82b4',
-          600: '#6b6ca5',
-          700: '#605f96',
-          800: '#4d4b72',
-          900: '#454464',
-          950: '#2e2d3e',
-          DEFAULT:'#4d4b72',
-      },
-      
-        
+          },
+          default: {
+            950: '#f5f6f988',
+            900: '#e7e9f288',
+            800: '#d5d8e888',
+            700: '#b9bed788',
+            600: '#979ec388',
+            500: '#7d82b488',
+            400: '#6b6ca588',
+            300: '#605f968',
+            200: '#4d4b7288',
+            100: '#45446488',
+            50: '#2e2d3e88',
+            DEFAULT: '#4d4b7288',
+          },
+
+
         }
       }
     }
