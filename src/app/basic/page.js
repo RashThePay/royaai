@@ -35,7 +35,7 @@ export default function App() {
         setHistory(history.reverse())
     }, [dream])
     return (
-        <section className="w-full p-[2dvw] gap-2 flex flex-col md:flex-row h-[80dvh]">
+        <section className="w-full p-[2dvw] gap-2 flex flex-col md:flex-row h-[70dvh]">
             <div className="flex-1 flex flex-col gap-2">
                 <form className="gap-2 flex-col flex" action={submitForm} onSubmit={() => setIsLoading(true)}>
                     <Textarea
@@ -46,7 +46,7 @@ export default function App() {
                         name="prompt"
                         classNames={{ inputWrapper: "w-full rounded-xl" }}
                     />
-                    <div className="flex flex-col md:flex-row gap-2">
+                    <div className="flex flex-col lg:flex-row gap-2">
                         <Styles />
                         <Dimensions />
                         <Button type="submit"

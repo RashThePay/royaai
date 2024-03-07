@@ -12,7 +12,7 @@ export default function Styles() {
         <Select
             onChange={(e)=>setSelected(e.target.value)}
             items={styles}
-            className="md:max-w-[400px] h-[60px]"
+            className="lg:max-w-[400px] h-[60px]"
             classNames={{selectorIcon: "left-3 right-auto", value:"text-right"}}
             startContent={<Icon name="palette" color="primary" />}
             label="انتخاب سبک دلخواه"

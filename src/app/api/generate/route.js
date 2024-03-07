@@ -1,5 +1,5 @@
 import axios from "axios";
-import fs from 'fs';
+import translate from "@iamtraction/google-translate";
 
 export async function POST(request) {
     const formData = await request.formData()
@@ -9,6 +9,8 @@ export async function POST(request) {
     let ratio = 'old_vertical_ratio';
     if (orientation == 'square') { ratio = 'RATIO_1'; }
     try {
+        const english = await translate(prompt, {to: "en"});
+        const prompt_en = english.text;
         let options = {
             "method": "post",
             "url": "https://securetoken.googleapis.com/v1/token?key=AIzaSyDCvp5MTJLUdtBYEKYWXJrlLzu1zuKM6Xw",
@@ -65,7 +67,7 @@ export async function POST(request) {
         let data = {
             is_premium: false,
             input_spec: {
-                prompt: prompt,
+                prompt: prompt_en,
                 style: style,
                 display_freq: 10,
                 aspect_ratio: ratio,

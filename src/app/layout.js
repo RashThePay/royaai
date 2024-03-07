@@ -12,7 +12,7 @@ export const metadata = {
 export default function RootLayout({ children }) {
   return (
     <html lang="fa-IR" dir="rtl" className="purple-dark">
-      <body className={vazir.className+" md:overflow-hidden"}>
+      <body className={vazir.className}>
         <Providers>
           <Navbar/>
           <main className="p-6 flex justify-center items-start">
