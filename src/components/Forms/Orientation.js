@@ -6,7 +6,7 @@ export function Dimensions() {
     return (
         <>
             <Tabs aria-label="orientation"
-            className="h-[60px]" 
+            className="h-[60px] flex-1" 
             classNames={{tabList:"w-full h-full", tab:"h-full"}}
             onSelectionChange={(key) => select(key)}>
                 <Tab key="square" title={<div className="flex items-center"><Icon name="square" color="primary" />مربع</div>} />

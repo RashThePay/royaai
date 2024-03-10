@@ -5,15 +5,15 @@ import Image from "next/image"
 import Icon from "../Icon"
 import { useState } from "react"
 export default function Styles() {
-    const [selected, setSelected] = useState(new Set([]))
+    const [selected, setSelected] = useState(130)
     return (
         <>
         <input type="hidden" value={selected} name="style" />
         <Select
             onChange={(e)=>setSelected(e.target.value)}
             items={styles}
-            className="lg:max-w-[400px] h-[60px]"
-            classNames={{selectorIcon: "left-3 right-auto", value:"text-right"}}
+            className="lg:max-w-[400px] h-[60px] flex-1"
+            classNames={{selectorIcon: "left-3 right-auto", value:"text-right", popoverContent:"bg-default-100/100 w-full"}}
             startContent={<Icon name="palette" color="primary" />}
             label="انتخاب سبک دلخواه"
             placeholder="یک سبک دلخواه انتخاب کنید."

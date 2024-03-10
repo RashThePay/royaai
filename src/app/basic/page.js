@@ -3,17 +3,29 @@ import Icon from "@/components/Icon";
 import { Textarea } from "@nextui-org/input";
 import Styles from "@/components/Forms/Styles";
 import { Dimensions } from "@/components/Forms/Orientation";
-import { Button, Card, CardFooter } from "@nextui-org/react";
+import { Button } from "@nextui-org/button";
 import { useEffect, useState } from "react";
-import Image from "next/image";
 import { addArt, getArts } from "@/storage";
 import Art from "@/components/Art";
+import { usePiwikPro } from '@piwikpro/next-piwik-pro'
+import { getStyle } from "@/utils";
+
 export default function App() {
     const [isLoading, setIsLoading] = useState(false)
     const [dream, setDream] = useState(null)
     const [history, setHistory] = useState([])
-    
+    const { PageViews } = usePiwikPro()
+    const { CustomEvent } = usePiwikPro()
+    useEffect(() => {
+        PageViews.trackPageView('basic view')
+    },[])
     async function submitForm(formData) {
+
+        if (formData.get('style').length == 0 || formData.get('prompt').length < 3) {
+            setIsLoading(false);
+            return false;
+        }
+        
         const res = await fetch('/api/generate', { method: 'POST', body: formData });
         const result = await res.json();
         setDream({
@@ -29,6 +41,7 @@ export default function App() {
             orientation: formData.get('orientation')
         })
         setIsLoading(false);
+        CustomEvent.trackEvent('Basic', 'generate', 'style', getStyle(formData.get('style')).name)
     }
     useEffect(() => {
         let history = getArts().splice(-5)
@@ -52,23 +65,24 @@ export default function App() {
                         <Button type="submit"
                             size="lg"
                             isLoading={isLoading}
-                            className="flex-1 text-right gap-0 min-h-[60px]" color="primary"
+                            className="flex-0 text-right gap-0 min-h-[60px]" color="primary"
                             startContent={!isLoading && <Icon name="sparkle" color="default" />}
                         >{!isLoading && 'بباف!'}</Button>
                     </div>
                 </form>
                 <div dir='ltr' className="grid grid-cols-5 gap-2">
                     {history.length ? history.map((item) => {
-                        if (item.img != dream) return (
-                        <div onClick={()=>setDream(item)}>
-                                <Art item={item}/>
+                        if (item != dream) return (
+                            <div key={item.prompt} onClick={() => setDream(item)}>
+                                <Art item={item} />
                             </div>
-                    )}) : ''}
+                        )
+                    }) : ''}
                 </div>
             </div>
             <div className="output">
                 <div className="relative overflow-hidden w-auto h-[80dvw] md:h-[75dvh] md:w-[75dvh] bg-default-100 rounded-xl">
-                    {dream ? (<Art item={dream} className="h-full"/>) : ""}
+                    {dream ? (<Art item={dream} className="h-full" />) : ""}
                 </div>
             </div>
         </section>

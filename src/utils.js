@@ -1,9 +1,9 @@
 
-import styles from "@/styles.json";
+import {styles} from "@/styles";
 
 export function getStyle(id) {
     for (let style of styles) {
-        if (style.id == id) {
+        if (style['id'] == id) {
             return style;
         }
     }

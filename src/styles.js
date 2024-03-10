@@ -1,4 +1,4 @@
-export const styles= [
+export const styles = [
     {
         "id": 133,
         "name": "رتروپاپ",
